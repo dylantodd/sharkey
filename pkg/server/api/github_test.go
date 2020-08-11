@@ -27,7 +27,7 @@ func TestEmptyGitHubUser(t *testing.T) {
 		Hostname:       hostname,
 		UsernameHeader: header,
 	}
-	c.conf.GitHub.Enabled = true
+	c.conf.GitHub.IncludeUserIdentity = true
 
 	hook := test.NewLocal(c.logger)
 
@@ -73,7 +73,7 @@ func TestGitHubUser(t *testing.T) {
 		Hostname:       hostname,
 		UsernameHeader: header,
 	}
-	c.conf.GitHub.Enabled = true
+	c.conf.GitHub.IncludeUserIdentity = true
 
 	sqlite, err := storage.NewSqlite(config.Database{Address: ":memory:"})
 	require.NoError(t, err)
